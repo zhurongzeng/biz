@@ -9,46 +9,25 @@
             <div class="sidebar-toggler hidden-phone"></div>
             <!-- 侧栏翻转按钮 结束 -->
         </li>
-        <!--<li>-->
-            <!--&lt;!&ndash; BEGIN RESPONSIVE QUICK SEARCH FORM &ndash;&gt;-->
-            <!--<form class="sidebar-search">-->
-                <!--<div class="input-box">-->
-                    <!--<a href="javascript:;" class="remove"></a>-->
-                    <!--<input type="text" placeholder="Search..."/>-->
-                    <!--<input type="button" class="submit" value=" "/>-->
-                <!--</div>-->
-            <!--</form>-->
-            <!--&lt;!&ndash; END RESPONSIVE QUICK SEARCH FORM &ndash;&gt;-->
-        <!--</li>-->
         <li class="start active ">
             <a th:href="@{/index}">
                 <i class="icon-home"></i>
-                <span class="title">Dashboard</span>
+                <span class="title">首页</span>
                 <span class="selected"></span>
             </a>
         </li>
         <li class="">
             <a href="javascript:;">
-                <i class="icon-cogs"></i>
+                <i class="icon-user"></i>
                 <span class="title">个人中心</span>
                 <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
                 <li>
-                    <a th:href="@{/article/list}">文章管理</a>
-                </li>
-            </ul>
-        </li>
-        <li class="">
-            <a href="javascript:;">
-                <i class="icon-bookmark-empty"></i>
-                <span class="title">UI Features</span>
-                <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="ui_general.html">
-                        General</a>
+                    <a th:href="@{/article/list}">
+                        <i class="icon-file"></i>
+                        文章管理
+                    </a>
                 </li>
             </ul>
         </li>

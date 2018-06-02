@@ -1,20 +1,15 @@
 package com.niu.biz.controller;
 
-import com.niu.biz.dao.ICustomerDAO;
 import com.niu.biz.po.CustomerInfo;
 import com.niu.biz.service.ICustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * 入口
- *
- * @author
- * @create 2018-05-26 17:39
- **/
 @Slf4j
 @Controller
 public class IndexController {
@@ -26,6 +21,10 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping(value = "index2")
+    public String index2() {
+        return "index";
+    }
     @PostMapping(value = "register")
     @ResponseBody
     public String register(CustomerInfo customerInfo) {

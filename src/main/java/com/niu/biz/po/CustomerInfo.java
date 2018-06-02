@@ -1,7 +1,6 @@
 package com.niu.biz.po;
 
 import lombok.Data;
-import lombok.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -21,7 +20,6 @@ import java.util.Collection;
 @Entity
 @Table(name = "t_customer_info")
 public class CustomerInfo implements UserDetails {
-
     /**
      * 账户序号
      */
@@ -44,37 +42,37 @@ public class CustomerInfo implements UserDetails {
     /**
      * 真实姓名
      */
-    @Column(nullable = false, length = 40)
+    @Column
     private String customerName;
 
     /**
      * 证件类型
      */
-    @Column(nullable = false, length = 9)
+    @Column
     private String customerCertType;
 
     /**
      * 证件号码
      */
-    @Column(nullable = false, length = 30)
+    @Column
     private String customerCertId;
 
     /**
      * 手机号加密串
      */
-    @Column(nullable = false, length = 60)
+    @Column
     private String phoneSecret;
 
     /**
      * 手机号7位串
      */
-    @Column(nullable = false, length = 10)
+    @Column
     private String phoneStr7;
 
     /**
      * 登陆密码
      */
-    @Column(nullable = false, length = 60)
+    @Column
     private String password;
 
     /**
@@ -92,25 +90,25 @@ public class CustomerInfo implements UserDetails {
     /**
      * 客户类型3
      */
-    @Column(nullable = false, length = 9)
+    @Column
     private String customerType3;
 
     /**
      * 客户等级
      */
-    @Column(nullable = false, length = 9)
+    @Column
     private String customerLevel;
 
     /**
      * 客户等级2
      */
-    @Column(nullable = false, length = 9)
+    @Column
     private String customerLevel2;
 
     /**
      * 是否seller
      */
-    @Column(nullable = false, length = 3)
+    @Column
     private String selFlag;
 
     /**
@@ -170,7 +168,7 @@ public class CustomerInfo implements UserDetails {
     /**
      * 创建时间
      */
-    @Column(nullable = false, length = 20)
+    @Column
     private String createDatetime;
 
     /**
@@ -257,6 +255,11 @@ public class CustomerInfo implements UserDetails {
     @Override
     public String getUsername() {
         return this.userName;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
     }
 
     @Override
