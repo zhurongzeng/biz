@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>新增文章</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/css/public.css}" media="all"/>
+</head>
+<body class="childrenBody">
+<form class="layui-form">
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <label class="layui-form-label" for="title">标题：</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="title" class="layui-input" lay-verify="required" placeholder="请输入标题"/>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class="magb15 layui-col-md6 layui-col-xs12">
+            <label class="layui-form-label" for="price">资讯单价：</label>
+            <div class="layui-input-block">
+                <input type="number" name="price" id="price" class="layui-input" lay-verify="required"
+                       placeholder="请输入资讯单价"/>
+            </div>
+        </div>
+        <div class="magb15 layui-col-md6 layui-col-xs12">
+            <label class="layui-form-label" for="feeType">资讯类别：</label>
+            <div class="layui-input-block">
+                <select name="feeType" id="feeType" lay-verify="required" lay-filter="feeType">
+                    <option value="">请选择...</option>
+                    <option value="1">类别1</option>
+                    <option value="2">类别2</option>
+                    <option value="3">类别3</option>
+                    <option value="4">类别4</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <label class="layui-form-label" for="content1">免费内容：</label>
+        <div class="layui-input-block">
+            <div id="content1"></div>
+            <textarea id="content-text" name="content" style="display: none;"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <label class="layui-form-label" for="contentVip">付费内容：</label>
+        <div class="layui-input-block">
+            <div id="contentVip"></div>
+            <textarea id="contentVip-text" name="content" style="display: none;"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <input name="tchUserName" th:value="${session.SPRING_SECURITY_CONTEXT.authentication.name}" type="hidden"/>
+        <input name="sendFlag" id="sendFlag " th:value="0" type="hidden"/>
+    </div>
+    <div class="layui-form-item layui-row layui-col-xs12">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="save">保存</button>
+            <button class="layui-btn layui-btn-sm layui-btn-danger" id="cancel">取消</button>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" th:src="@{/js/media/jquery-1.10.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/js/biz/information.js}"></script>
+<script type="text/javascript" th:src="@{/js/media/wangEditor.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery.form-3.46.0.js}"></script>
+<script>
+    var E = window.wangEditor;
+
+    var content = new E('#content1');
+    content.customConfig.uploadImgShowBase64 = true;
+    content.customConfig.zIndex = 100;
+    content.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $('#content-text').val(html)
+    }
+    content.create();
+
+    var contentVip = new E('#contentVip');
+    contentVip.customConfig.uploadImgShowBase64 = true;
+    contentVip.customConfig.zIndex = 100;
+    contentVip.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $('#contentVip-text').val(html)
+    }
+    contentVip.create();
+</script>
+</body>
+</html>

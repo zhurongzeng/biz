@@ -912,7 +912,7 @@ Page breadcrumb
   box-shadow: none;
   padding-right: 0px;
   padding-left: 8px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   border:0px !important;  
   background-color: #eee;
 }
@@ -1186,7 +1186,7 @@ Portlets
 .portlet  {
   clear: both;
   margin-top: 0px;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   padding: 0px;
 }
 
@@ -1209,11 +1209,11 @@ Portlets
 .portlet-title .caption {
   float: left;
   display: inline-block;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 400;
-  margin: 0;
+  /*margin: 0;*/
   padding: 0;
-  margin-bottom: 7px; 
+  /*margin-bottom: 7px; */
 }
 
 .portlet-title .caption i {
@@ -1575,7 +1575,7 @@ Box portlet
 
 .portlet.box.light-grey {  
    border: 1px solid #eee;
-   border-top: 0;
+   /*border-top: 0;*/
 }
 
 /***
@@ -5283,4 +5283,8 @@ Datatables Plugin(in v1.3)
 .dataTable .details tr:nth-child(even) td,
 .dataTable .details tr:nth-child(even) th {
   background-color: #eee !important;
+}
+
+#pageTitle {
+  margin-top: 15px
 }

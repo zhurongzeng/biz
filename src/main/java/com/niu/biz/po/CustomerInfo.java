@@ -1,5 +1,6 @@
 package com.niu.biz.po;
 
+import com.niu.biz.annotation.GeneratedUID;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,12 +20,12 @@ import java.util.Collection;
 @Data
 @Entity
 @Table(name = "t_customer_info")
-public class CustomerInfo implements UserDetails {
+public class CustomerInfo extends BasePO implements UserDetails {
     /**
      * 账户序号
      */
     @Id
-    @Column
+    @GeneratedUID
     private String userId;
 
     /**
@@ -164,18 +165,6 @@ public class CustomerInfo implements UserDetails {
      */
     @Column
     private String workDesc;
-
-    /**
-     * 创建时间
-     */
-    @Column
-    private String createDatetime;
-
-    /**
-     * 修改时间
-     */
-    @Column
-    private String updateDatetime;
 
     /**
      * 备用字段1

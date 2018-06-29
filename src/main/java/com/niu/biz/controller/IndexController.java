@@ -4,7 +4,8 @@ import com.niu.biz.po.CustomerInfo;
 import com.niu.biz.service.ICustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,18 +26,18 @@ public class IndexController {
     public String index2() {
         return "index";
     }
+
     @PostMapping(value = "register")
     @ResponseBody
     public String register(CustomerInfo customerInfo) {
-        log.info("==> 开始注册，用户信息：\n==> {}", customerInfo);
+        log.info("==> 开始注册!");
         try {
-            Md5PasswordEncoder encoder = new Md5PasswordEncoder();
-            String password = encoder.encodePassword(customerInfo.getPassword(), null);
+            PasswordEncoder encoder = new BCryptPasswordEncoder();
+            String password = encoder.encode(customerInfo.getPassword());
             customerInfo.setPassword(password);
-            customerInfo.setUserId("CU" + String.valueOf(System.currentTimeMillis()));
             customerInfo = customerService.save(customerInfo);
         } catch (Exception e) {
-            log.error("==> 注册失败！失败原因：{}", e.getStackTrace());
+            log.error("==> 注册失败！\n", e);
         }
         log.info("==> 注册成功！");
         return customerInfo.getUserName() + "注册成功";

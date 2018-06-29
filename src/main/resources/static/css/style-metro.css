@@ -184,6 +184,14 @@ select:focus {
   padding: 4px 10px;
 }
 
+.medium
+{
+  height: 30px;
+  font-size: 13px !important;
+  line-height: 20px;
+  padding: 6px 12px;
+}
+
 .big
 {
   height: 38px;
@@ -200,6 +208,14 @@ input[type="submit"].btn.big {
   padding-bottom: 8px;
 }
 
+button.btn.medium,
+input[type="button"].btn.medium,
+input[type="submit"].btn.medium {
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 button.btn.mini,
 input[type="button"].btn.mini,
 input[type="submit"].btn.mini {
@@ -210,6 +226,10 @@ input[type="submit"].btn.mini {
 
 a.btn.big.btn-block {
  height: 54px;
+}
+
+a.btn.medium.btn-block {
+  height: 30px;
 }
 
 /***
@@ -617,7 +637,7 @@ select.m-wrap.xsmall {
 }
 
 select.m-wrap.small {
-  width: 134px !important;
+  width: 55px !important;
 }
 
 select.m-wrap.medium {
